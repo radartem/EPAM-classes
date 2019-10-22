@@ -2,7 +2,7 @@
 {
     public class PassengerPlane : Plane
     {
-        private readonly int _passengersCapacity;
+        readonly int _passengersCapacity;
 
         public PassengerPlane(string model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, int passengersCapacity)
             : base(model, maxSpeed, maxFlightDistance, maxLoadCapacity)

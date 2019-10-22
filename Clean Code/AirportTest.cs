@@ -10,7 +10,7 @@ namespace AircompanyTests.Tests
     [TestFixture]
     public class AirportTests
     {
-        private readonly List<Plane> _planes = new List<Plane>
+        readonly List<Plane> _planes = new List<Plane>
         {
            new PassengerPlane("Boeing-737", 900, 12000, 60500, 164),
            new PassengerPlane("Boeing-737-800", 940, 12300, 63870, 192),
