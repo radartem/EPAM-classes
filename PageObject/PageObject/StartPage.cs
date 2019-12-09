@@ -8,40 +8,42 @@ namespace PageObject
 {
     public class StartPage
     {
+        [FindsBy(How = How.Id, Using = "cars-filter-property-availability-date-begin")]
+        private IWebElement rentalDateStart;
+
+        [FindsBy(How = How.Id, Using = "cars-filter-property-availability-date-end")]
+        private IWebElement rentalDateEnd;
+
+        [FindsBy(How = How.Id, Using = "block-home-search_button-search")]
+        private IWebElement submitButton;
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='notifies-block']/div")]
+        private IWebElement errorMessageAlert;
+
         public StartPage(IWebDriver webDriver)
         {
             PageFactory.InitElements(webDriver, this);
         }
 
-        [FindsBy(How = How.Id, Using = "cars-filter-property-availability-date-begin")]
-        private IWebElement rentalDateStart { get; set; }
-
-        [FindsBy(How = How.Id, Using = "cars-filter-property-availability-date-end")]
-        private IWebElement rentalDateEnd { get; set; }
-
-        [FindsBy(How = How.Id, Using = "block-home-search_button-search")]
-        private IWebElement submitButton { get; set; }
-      
-        [FindsBy(How = How.XPath, Using = "//div[@id='notifies-block']/div")]
-        private IWebElement errorMessageAlert { get; set; }
-        
         public StartPage SetDateStart(int coutDays)
         {
-            var keys = coutDays > 0 ? Keys.ArrowRight : Keys.ArrowLeft;
-
-            for (int i = 0; i < Math.Abs(coutDays); i++)
-                rentalDateStart.SendKeys(keys);
+            setDateCalendar(rentalDateStart, coutDays);
 
             return this;
         }
         public StartPage SetDateEnd(int coutDays)
         {
-            var keys = coutDays > 0 ? Keys.ArrowRight : Keys.ArrowLeft;
-
-            for (int i = 0; i < Math.Abs(coutDays); i++)
-                rentalDateEnd.SendKeys(keys);
+            setDateCalendar(rentalDateEnd, coutDays);
 
             return this;
+        }
+
+        private void setDateCalendar(IWebElement calendar, int days)
+        {
+            var keys = days > 0 ? Keys.ArrowRight : Keys.ArrowLeft;
+
+            for (int i = 0; i < Math.Abs(days); i++)
+                calendar.SendKeys(keys);
         }
 
         public StartPage ClickSubmitButton()

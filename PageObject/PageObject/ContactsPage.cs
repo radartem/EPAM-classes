@@ -14,32 +14,38 @@ namespace PageObject
             PageFactory.InitElements(webDriver, this);
         }
 
-        [FindsBy(How = How.ClassName, Using = "nav-main__link")]
-        private IWebElement navigationMenuLinkContacts { get; set; }
+        [FindsBy(How = How.XPath, Using = "//a[@href='/info/']")]
+        private IWebElement navigationMenuLinkContacts;
 
-        [FindsBy(How = How.ClassName, Using = "field-input")]
-        private IWebElement[] listOfFields { get; set; }
+        [FindsBy(How = How.Name, Using = "PROPERTY[NAME][0]")]
+        private IWebElement topicField;
 
-        [FindsBy(How = How.ClassName, Using = "field-input-textarea")]
-        private IWebElement fieldMessage { get; set; }
+        [FindsBy(How = How.Name, Using = "PROPERTY[PREVIEW_TEXT][0]")]
+        private IWebElement previewTextField;
+
+        [FindsBy(How = How.Name, Using = "PROPERTY[216][0]")]
+        private IWebElement eMailField;
+
+        [FindsBy(How = How.Name, Using = "PROPERTY[217][0]")]
+        private IWebElement pNumberField;
 
         [FindsBy(How = How.Name, Using = "iblock_submit")]
-        private IWebElement sendButton { get; set; }
+        private IWebElement sendButton;
 
         [FindsBy(How = How.ClassName, Using = "errortext")]
-        private IWebElement errorMessageAlert { get; set; }
+        private IWebElement errorMessageAlert;
 
         public ContactsPage GoToContactsPage(IWebDriver webDriver)
         {
             navigationMenuLinkContacts.Click();
             return this;
         }
-        public ContactsPage SendMessage(string[] messageFields)
+        public ContactsPage SendMessage(Message message)
         {
-            fromInputfields[0].SendKeys(messageFields[0]); //fielde "Тема"
-            fromInputfields[1].SendKeys(messageFields[1]);    //field "Е-mail"
-            fromInputfields[2].SendKeys(messageFields[2]); //field "Номер"
-            fieldMessage.SendKeys(messageFields[3]); //field "Номер"
+            topicField.SendKeys(message.Topic);
+            previewTextField.SendKeys(message.MessageText);
+            eMailField.SendKeys(message.Email);
+            pNumberField.SendKeys(message.PNumber);
 
             return this;
         }
@@ -50,4 +56,5 @@ namespace PageObject
         }
 
     }
+
 }

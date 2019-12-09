@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using PageObject;
 
 namespace SeleniumWebDriver
 {
@@ -38,27 +39,31 @@ namespace SeleniumWebDriver
             Assert.AreEqual(expectingMessage, errorMessage);
         }
 
-        //[Test]
-        //public void SendBlankEMail()
-        //{
-        //    string expectingMessage = "Поле 'E-mail' должно быть заполнено!\r\nПоле 'Тема' должно быть заполнено!\r\nПоле 'Ваше сообщение' должно быть заполнено!\r\nПодтвердите что вы не робот";
+        [Test]
+        public void SendBlankEMail()
+        {
+            string expectingMessage = "Поле 'E-mail' должно быть заполнено!\r\nПоле 'Тема' должно быть заполнено!\r\nПоле 'Ваше сообщение' должно быть заполнено!\r\nПодтвердите что вы не робот";
 
-        //    ContactsPage contactsPage = new ContactsPage(webDriver);
+            ContactsPage contactsPage = new ContactsPage(webDriver);
 
-        //    string errorMessage = contactsPage.GoToContactsPage().SendMessage().GetMessageText;
+            string errorMessage = contactsPage.GoToContactsPage(webDriver)
+                                                .SendMessage(new Message())
+                                                .GetMessageText();
 
-        //    Assert.AreEqual(expectingMessage, errorMessage);
-        //}
+            Assert.AreEqual(expectingMessage, errorMessage);
+        }
 
         [Test]
         public void SendEMailIncorrectEMailAdr()
         {
             string expectingMessage = "Неправильный E-mail\r\nПодтвердите что вы не робот";
 
-            string[] messageFields = { "Test topic", "testMail", "375298947333", "My message" }; // fields "Тема", "E-mail","Номер","Сообщение"
+            Message message = new Message("Test topic", "testMail", "375298947333", "My message"); // fields "Тема", "E-mail","Номер","Сообщение"
             ContactsPage contactsPage = new ContactsPage(webDriver);
 
-            string errorMessage = contactsPage.GoToContactsPage().SendMessage().GetMessageText;
+            string errorMessage = contactsPage.GoToContactsPage(webDriver)
+                                                .SendMessage(message)
+                                                .GetMessageText();
 
             Assert.AreEqual(expectingMessage, errorMessage);
         }
