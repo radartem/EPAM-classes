@@ -4,9 +4,10 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using System.Collections.Generic;
-using PageObject.Pages;
+using Framework.Pages;
+using Framework.Model;
 
-namespace PageObject
+namespace Framework
 {
     public class ContactsPage :BasePage
     {

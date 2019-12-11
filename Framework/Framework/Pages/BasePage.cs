@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace PageObject.Pages
+namespace Framework.Pages
 {
     public abstract class BasePage
     {

@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using PageObject.driver;
+using Framework.driver;
+using System.IO;
+using NUnit.Framework.Interfaces;
+using Framework.Utils;
 
-namespace PageObject.Test
+namespace Framework.Test
 {
     public class CommonConditions
     {
@@ -19,12 +22,17 @@ namespace PageObject.Test
         {
             webDriver = DriverSingleton.GetWebDriver();
             webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+                       
         }
 
         [TearDown]
-        public void QuitDriver()
+        public void ClearDriver()
         {
-            webDriver.Quit();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+                ScreenshotCreater.SaveScreenShot(webDriver);
+
+            DriverSingleton.CloseDriver();
         }
+
     }
 }

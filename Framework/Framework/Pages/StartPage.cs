@@ -3,9 +3,12 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
-using PageObject.Pages;
+using Framework.Pages;
+using Framework.Utils;
+using Framework.Model;
+using System.Threading;
 
-namespace PageObject
+namespace Framework
 {
     public class StartPage : BasePage
     {
@@ -29,25 +32,17 @@ namespace PageObject
             PageFactory.InitElements(webDriver, this);
         }
 
-        public StartPage SetDateStart(int coutDays)
+        public StartPage SetDateStartFromDefault(int coutDays)
         {
-            setDateCalendar(rentalDateStart, coutDays);
+            DateCalendarManipulater.SetDateCalendar(rentalDateStart, coutDays);
 
             return this;
         }
-        public StartPage SetDateEnd(int coutDays)
+        public StartPage SetDateEndFromDefault(int coutDays)
         {
-            setDateCalendar(rentalDateEnd, coutDays);
+            DateCalendarManipulater.SetDateCalendar(rentalDateEnd, coutDays);
 
             return this;
-        }
-
-        private void setDateCalendar(IWebElement calendar, int days)
-        {
-            var keys = days > 0 ? Keys.ArrowRight : Keys.ArrowLeft;
-
-            for (int i = 0; i < Math.Abs(days); i++)
-                calendar.SendKeys(keys);
         }
 
         public StartPage ClickSubmitButton()
@@ -56,7 +51,7 @@ namespace PageObject
             return this;
         }
 
-        public string GetMessageText()
+        public string GetErrorMessageText()
         {
             return errorMessageAlert.Text;
         }

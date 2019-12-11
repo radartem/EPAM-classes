@@ -2,10 +2,12 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using PageObject;
-using PageObject.Test;
+using Framework;
+using Framework.Test;
+using Framework.Services;
+using Framework.Model;
 
-namespace SeleniumWebDriver
+namespace Framework.Test
 {
     [TestFixture]
     public class ConsultationFormTest : CommonConditions
@@ -13,7 +15,7 @@ namespace SeleniumWebDriver
         [Test]
         public void SendBlankEMail()
         {
-            string expectingMessage = "Поле 'E-mail' должно быть заполнено!\r\nПоле 'Тема' должно быть заполнено!\r\nПоле 'Ваше сообщение' должно быть заполнено!\r\nПодтвердите что вы не робот";
+            string expectingMessage = ErrorCreater.MessageWithEmptyFields();
 
 
             string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
@@ -27,9 +29,9 @@ namespace SeleniumWebDriver
         [Test]
         public void SendEMailIncorrectEMailAdr()
         {
-            string expectingMessage = "Неправильный E-mail\r\nПодтвердите что вы не робот";
+            string expectingMessage = ErrorCreater.MessageWithInvalidEMail();
 
-            Message message = new Message("Test topic", "testMail", "375298947333", "My message"); // fields "Тема", "E-mail","Номер","Сообщение"
+            Message message = MessageCreater.WithAllProperties();
 
             string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
                                                 .GoToContactsPage()
