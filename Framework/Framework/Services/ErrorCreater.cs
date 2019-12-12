@@ -16,7 +16,7 @@ namespace Framework.Services
         static readonly string startDateLeaseEndDate = "Дата начала аренды позже даты окончания.";
         static readonly string incorrectLoginOrPassword = "Неверный логин или пароль.";
         static readonly string similarStartDateAndEndDate = "Дата начала аренды не может совпадать с датой окончания.";
-
+        static readonly string userWithZeroExp = "Стаж не указан";
         public static string MessageWithInvalidEMail()
         {
             return invalidEmail+"\r\n" + captchaError;
@@ -39,6 +39,10 @@ namespace Framework.Services
         public static string StartDateLeaseEndDate()
         {
             return "×\r\n"+ startDateLeaseEndDate;
+        }
+        public static string UserWithZeroExp()
+        {
+            return "×\r\n" + userWithZeroExp;
         }
 
         public static string SimilarStartDateAndEndDate()

@@ -13,6 +13,7 @@ namespace Framework.Test
     public class ConsultationFormTest : CommonConditions
     {
         [Test]
+        [Category("FormTest")]
         public void SendBlankEMail()
         {
             string expectingMessage = ErrorCreater.MessageWithEmptyFields();
@@ -27,6 +28,7 @@ namespace Framework.Test
         }
 
         [Test]
+        [Category("FormTest")]
         public void SendEMailIncorrectEMailAdr()
         {
             string expectingMessage = ErrorCreater.MessageWithInvalidEMail();

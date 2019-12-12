@@ -45,10 +45,10 @@ namespace Framework
             return this;
         }
 
-        public StartPage ClickSubmitButton()
+        public OrdersListPage ClickSubmitButton()
         {
             submitButton.Click();
-            return this;
+            return new OrdersListPage(this.webDriver);
         }
 
         public string GetErrorMessageText()

@@ -13,6 +13,7 @@ namespace Framework.Test
     public class LoginTest : CommonConditions
     {
         [Test]
+        [Category("LoginTest")]
         public void LoginAsRegistratedUser()
         {
             string expectingMessage = ErrorCreater.CorrectLoginAndPassword();
@@ -26,6 +27,7 @@ namespace Framework.Test
         }
 
         [Test]
+        [Category("LoginTest")]
         public void LoginAsRegistratedUserWithIncorrectPassword()
         {
             string expectingMessage = ErrorCreater.IncorrectLoginOrPassword();
@@ -39,6 +41,7 @@ namespace Framework.Test
         }
 
         [Test]
+        [Category("LoginTest")]
         public void LoginAsNonRegistratedUser()
         {
             string expectingMessage = ErrorCreater.IncorrectLoginOrPassword();

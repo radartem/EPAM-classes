@@ -10,6 +10,7 @@ using Framework.driver;
 using System.IO;
 using NUnit.Framework.Interfaces;
 using Framework.Utils;
+using OpenQA.Selenium.Support.UI;
 
 namespace Framework.Test
 {
@@ -21,8 +22,7 @@ namespace Framework.Test
         public void StartBrowserAndGoToTheSite()
         {
             webDriver = DriverSingleton.GetWebDriver();
-            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
-                       
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
         }
 
         [TearDown]

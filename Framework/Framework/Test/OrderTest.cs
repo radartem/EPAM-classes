@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using Framework;
 using Framework.Test;
 using Framework.Services;
+using Framework.Pages;
 
 namespace Framework.Test
 {
@@ -12,6 +13,7 @@ namespace Framework.Test
     public class OrderTest : CommonConditions
     {
         [Test]
+        [Category("OrderTest")]
         public void StartDateLeaseEndDate()
         {
             string expectingMessage = ErrorCreater.StartDateLeaseEndDate();
@@ -26,6 +28,7 @@ namespace Framework.Test
         }
 
         [Test]
+        [Category("OrderTest")]
         public void SimilarStartDateAndEndDate()
         {
             string expectingMessage = ErrorCreater.SimilarStartDateAndEndDate();
@@ -37,6 +40,50 @@ namespace Framework.Test
                                             .GetErrorMessageText();
 
             Assert.AreEqual(expectingMessage, errorMessage);
+        }
+
+        [Test]
+        [Category("PositiveTest")]
+        public void SendOrderPositiveTest()
+        {
+            string expectingMessage = ErrorCreater.UserWithZeroExp();
+
+            string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
+                                            .ClickSubmitButton()
+                                            .TakeMoreInformationAboutFirstOrder()
+                                            .SetDateStartFromDefault(1)
+                                            .SetDateEndFromDefault(1)
+                                            .SubmitOrderСhoice()
+                                            .FillInUserData(UserCreater.UserWithZeroExperience())
+                                            .SubmitOrder()
+                                            .GetErrorMessageText();
+
+            Assert.AreEqual(expectingMessage, errorMessage);
+        }
+
+        [Test]
+        [Category("OrderTest")]
+        public void SendOrderWithZeroExperience()
+        {
+            string expectingMessage = ErrorCreater.UserWithZeroExp();
+
+            string errorMessage = (new OrderRegistrationPage(webDriver).OpenPage() as OrderRegistrationPage)
+                                            .FillInUserData(UserCreater.UserWithZeroExperience())
+                                            .SubmitOrder()
+                                            .GetErrorMessageText();
+
+            Assert.AreEqual(expectingMessage, errorMessage);
+        }
+
+        [Test]
+        [Category("PositiveTest")]
+        public void FindAllOrdersPositiveTest()
+        {
+            Assert.False((new StartPage(webDriver).OpenPage() as StartPage)
+                                            .ClickSubmitButton()
+                                            .ResetFilters()
+                                            .SubmitFilterOptions()
+                                            .IsCarListEmpty());
         }
     }
 }
