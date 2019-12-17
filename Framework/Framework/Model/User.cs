@@ -17,6 +17,15 @@ namespace Framework.Model
             this.Experience = experience;
         }
 
+        public override string ToString()
+        {
+            return "\nUser data: \n" +
+                "EMail: " + EMail + "\n"+            
+                "Password: " + Password + "\n" +
+                "Name: " + Name + "\n" +
+                "PNumber: " + PNumber + "\n" +
+                "Experience: " + Experience + "\n";
+        }
         public string EMail { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }

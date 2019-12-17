@@ -13,7 +13,7 @@ namespace Framework.Utils
         public static void SaveScreenShot(IWebDriver webDriver)
         {
             ITakesScreenshot scrShot = ((ITakesScreenshot)webDriver);
-            DirectoryInfo directory = Directory.CreateDirectory(@".\Framework\Screenshots\" + DateTime.Now.ToString("dd_MM_yyyy")+@"\");
+            DirectoryInfo directory = Directory.CreateDirectory(@"Screenshots\" + DateTime.Now.ToString("dd_MM_yyyy")+@"\");
             scrShot.GetScreenshot().SaveAsFile(directory.FullName +@"\"+ DateTime.Now.ToString("HH_mm_ss") + ".png", ScreenshotImageFormat.Png);
         }
     }

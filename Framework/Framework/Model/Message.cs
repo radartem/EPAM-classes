@@ -20,5 +20,14 @@ namespace Framework.Model
             PNumber = pNumber;
             MessageText = message;
         }
+
+        public override string ToString()
+        {
+            return "\nMessage data:\n"+
+                "Topic: " + Topic+"\n"+
+                "Email: " + Email +"\n" +
+                "PNumber: " + PNumber +"\n" +
+                "MessageText: " + MessageText + "\n";
+        }
     }
 }

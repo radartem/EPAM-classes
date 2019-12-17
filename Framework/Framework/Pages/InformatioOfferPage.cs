@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Framework.Pages
 {
-    public class InformatioOfferPage : BasePage
+    public class InformationOfferPage : BasePage
     {
         [FindsBy(How = How.Id, Using = "rent_btn_submit")]
         private IWebElement rentalButtonSubmit;
@@ -25,25 +25,33 @@ namespace Framework.Pages
         {
             throw new NotImplementedException();
         }
-        public InformatioOfferPage(IWebDriver webDriver) : base(webDriver)
+
+        public InformationOfferPage(IWebDriver webDriver) : base(webDriver)
         {
+            Logger.Log.Info("Open information Offer page.");
+
             PageFactory.InitElements(webDriver, this);
         }
 
         public OrderRegistrationPage SubmitOrderСhoice()
         {
+            Logger.Log.Info("Submit order choice.");
             rentalButtonSubmit.Click();
             return new OrderRegistrationPage(this.webDriver);
         }
 
-        public InformatioOfferPage SetDateStartFromDefault(int coutDays)
+        public InformationOfferPage SetDateStartFromDefault(int coutDays)
         {
+            Logger.Log.Info("Set date start from default: " + coutDays.ToString());
+
             DateCalendarManipulater.SetDateCalendar(rentalDateStart, coutDays);
 
             return this;
         }
-        public InformatioOfferPage SetDateEndFromDefault(int coutDays)
+        public InformationOfferPage SetDateEndFromDefault(int coutDays)
         {
+            Logger.Log.Info("Set date end from default: " + coutDays.ToString());
+
             DateCalendarManipulater.SetDateCalendar(rentalDateEnd, coutDays);
             rentalDateEnd.SendKeys(Keys.Enter);
             

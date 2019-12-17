@@ -1,4 +1,5 @@
 ﻿using Framework.Model;
+using Framework.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -38,6 +39,8 @@ namespace Framework.Pages
 
         public OrderRegistrationPage FillInUserData(User user)
         {
+            Logger.Log.Info("Fill in user data:"+user.ToString());
+
             nameField.SendKeys(user.Name);
             experienceField.SendKeys(user.Experience);
             pNumberField.SendKeys(user.PNumber);
@@ -47,11 +50,14 @@ namespace Framework.Pages
 
         public OrderRegistrationPage SubmitOrder()
         {
+            Logger.Log.Info("Submit order.");
             rentSubmitButton.Click();
             return this;
         }
         public string GetErrorMessageText()
         {
+            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
+
             return errorMessageAlert.Text;
         }
 
@@ -62,6 +68,8 @@ namespace Framework.Pages
 
         public override BasePage OpenPage()
         {
+            Logger.Log.Info("Open order registration page");
+
             webDriver.Navigate().GoToUrl("https://rentride.ru/deal/38339620");
             return this;
         }

@@ -34,12 +34,16 @@ namespace Framework
 
         public StartPage SetDateStartFromDefault(int coutDays)
         {
+            Logger.Log.Info("Set date start from default: " + coutDays.ToString());
+
             DateCalendarManipulater.SetDateCalendar(rentalDateStart, coutDays);
 
             return this;
         }
         public StartPage SetDateEndFromDefault(int coutDays)
         {
+            Logger.Log.Info("Set date end from default: " + coutDays.ToString());
+
             DateCalendarManipulater.SetDateCalendar(rentalDateEnd, coutDays);
 
             return this;
@@ -47,23 +51,27 @@ namespace Framework
 
         public OrdersListPage ClickSubmitButton()
         {
+            Logger.Log.Info("Submit filter (ClickSubmitButton)");
             submitButton.Click();
             return new OrdersListPage(this.webDriver);
         }
 
         public string GetErrorMessageText()
         {
+            Logger.Log.Info("Get error text: " + errorMessageAlert.Text);
             return errorMessageAlert.Text;
         }
         
         public ContactsPage GoToContactsPage()
         {
+            Logger.Log.Info("Go to contacts page");
             navigationMenuLinkContacts.Click();
             return new ContactsPage(this.webDriver);
         }
 
         public override BasePage OpenPage()
         {
+            Logger.Log.Info("Open strat page.");
             webDriver.Navigate().GoToUrl("https://rentride.ru/");
             return this;
         }

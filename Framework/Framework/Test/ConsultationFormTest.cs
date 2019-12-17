@@ -6,6 +6,7 @@ using Framework;
 using Framework.Test;
 using Framework.Services;
 using Framework.Model;
+using Framework.Utils;
 
 namespace Framework.Test
 {
@@ -16,6 +17,7 @@ namespace Framework.Test
         [Category("FormTest")]
         public void SendBlankEMail()
         {
+            Logger.Log.Info("Start SendBlankEMail unit test.");
             string expectingMessage = ErrorCreater.MessageWithEmptyFields();
 
 
@@ -31,6 +33,8 @@ namespace Framework.Test
         [Category("FormTest")]
         public void SendEMailIncorrectEMailAdr()
         {
+            Logger.Log.Info("Start SendEMailIncorrectEMailAdr unit test.");
+
             string expectingMessage = ErrorCreater.MessageWithInvalidEMail();
 
             Message message = MessageCreater.WithAllProperties();

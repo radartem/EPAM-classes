@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Framework.Utils;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -37,32 +38,39 @@ namespace Framework.Pages
 
         public OrdersListPage(IWebDriver webDriver) : base(webDriver)
         {
+            Logger.Log.Info("Open orders list page");
             PageFactory.InitElements(webDriver, this);
         }
 
         public OrdersListPage ResetFilters()
         {
+            Logger.Log.Info("Reset filters");
             filterResetButton.Click();
             return this;
         }
         public OrdersListPage SubmitFilterOptions()
         {
+            Logger.Log.Info("Submit filter options");
+
             submitFilterButton.Click();
             return this;
         }
 
         public bool IsCarListEmpty()
         {
+            Logger.Log.Info("Cheak car list (count elements: " + carList.Count + ")");
             return carList.Count <= 0;
         }
 
-        public InformatioOfferPage TakeMoreInformationAboutFirstOrder()
+        public InformationOfferPage TakeMoreInformationAboutFirstOrder()
         {
+            Logger.Log.Info("Go to InformationOfferPage");
             firstMoreInformationButton.Click();
-            return new InformatioOfferPage(this.webDriver);
+            return new InformationOfferPage(this.webDriver);
         }
         public string GetErrorMessageText()
         {
+            Logger.Log.Info("Get error text: " + errorMessageAlert.Text);
             return errorMessageAlert.Text;
         }
         

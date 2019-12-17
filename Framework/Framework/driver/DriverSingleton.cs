@@ -11,7 +11,7 @@ using OpenQA.Selenium.Firefox;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace Framework.driver
+namespace Framework.Driver
 {
     public class DriverSingleton
     {
@@ -24,7 +24,7 @@ namespace Framework.driver
             {
                 switch(TestContext.Parameters.Get("browser"))
                 {                    
-                    case "edge":
+                    case "chrome":
                         new DriverManager().SetUpDriver(new EdgeConfig());
                         webDriver = new EdgeDriver();
                         break;

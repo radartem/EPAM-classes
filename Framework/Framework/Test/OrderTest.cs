@@ -6,6 +6,7 @@ using Framework;
 using Framework.Test;
 using Framework.Services;
 using Framework.Pages;
+using Framework.Utils;
 
 namespace Framework.Test
 {
@@ -16,6 +17,8 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void StartDateLeaseEndDate()
         {
+            Logger.Log.Info("Start StartDateLeaseEndDate unit test.");
+
             string expectingMessage = ErrorCreater.StartDateLeaseEndDate();
 
             string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
@@ -31,6 +34,8 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void SimilarStartDateAndEndDate()
         {
+            Logger.Log.Info("Start SimilarStartDateAndEndDate unit test.");
+
             string expectingMessage = ErrorCreater.SimilarStartDateAndEndDate();
 
             string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
@@ -46,6 +51,8 @@ namespace Framework.Test
         [Category("PositiveTest")]
         public void SendOrderPositiveTest()
         {
+            Logger.Log.Info("Start SendOrderPositiveTest unit test.");
+
             string expectingMessage = ErrorCreater.UserWithZeroExp();
 
             string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
@@ -65,6 +72,8 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void SendOrderWithZeroExperience()
         {
+            Logger.Log.Info("Start SendOrderWithZeroExperience unit test.");
+
             string expectingMessage = ErrorCreater.UserWithZeroExp();
 
             string errorMessage = (new OrderRegistrationPage(webDriver).OpenPage() as OrderRegistrationPage)
@@ -79,6 +88,8 @@ namespace Framework.Test
         [Category("PositiveTest")]
         public void FindAllOrdersPositiveTest()
         {
+            Logger.Log.Info("Start FindAllOrdersPositiveTest unit test.");
+
             Assert.False((new StartPage(webDriver).OpenPage() as StartPage)
                                             .ClickSubmitButton()
                                             .ResetFilters()

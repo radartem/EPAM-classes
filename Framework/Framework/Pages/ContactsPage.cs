@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using System.Collections.Generic;
 using Framework.Pages;
 using Framework.Model;
+using Framework.Utils;
 
 namespace Framework
 {
@@ -31,15 +32,17 @@ namespace Framework
 
         public ContactsPage FillInFields(Message message)
         {
+            Logger.Log.Info("Fill in fields by values" + message.ToString());
             topicField.SendKeys(message.Topic);
             previewTextField.SendKeys(message.MessageText);
             eMailField.SendKeys(message.Email);
             pNumberField.SendKeys(message.PNumber);
-
+            
             return this;
         }
         public ContactsPage SendMessage()
         {
+            Logger.Log.Info("Send message.");
             sendButton.Click();
 
             return this;
@@ -47,11 +50,13 @@ namespace Framework
 
         public string GetMessageText()
         {
+            Logger.Log.Info("Get message text: " + errorMessageAlert.Text);
             return errorMessageAlert.Text;
         }
 
         public override BasePage OpenPage()
         {
+            Logger.Log.Info("Open base page.");
             webDriver.Navigate().GoToUrl("https://rentride.ru/info/");
             return this;
         }
