@@ -39,7 +39,7 @@ namespace Framework.Pages
 
         public OrderRegistrationPage FillInUserData(User user)
         {
-            Logger.Log.Info("Fill in user data:"+user.ToString());
+            Logger.Log.Debug("Fill in user data:"+user.ToString());
 
             nameField.SendKeys(user.Name);
             experienceField.SendKeys(user.Experience);
@@ -50,13 +50,13 @@ namespace Framework.Pages
 
         public OrderRegistrationPage SubmitOrder()
         {
-            Logger.Log.Info("Submit order.");
+            Logger.Log.Debug("Submit order.");
             rentSubmitButton.Click();
             return this;
         }
         public string GetErrorMessageText()
         {
-            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
+            Logger.Log.Debug("Get error message text: " + errorMessageAlert.Text);
 
             return errorMessageAlert.Text;
         }
@@ -68,7 +68,7 @@ namespace Framework.Pages
 
         public override BasePage OpenPage()
         {
-            Logger.Log.Info("Open order registration page");
+            Logger.Log.Debug("Open order registration page");
 
             webDriver.Navigate().GoToUrl("https://rentride.ru/deal/38339620");
             return this;

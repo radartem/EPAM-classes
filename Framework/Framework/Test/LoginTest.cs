@@ -17,7 +17,7 @@ namespace Framework.Test
         [Category("LoginTest")]
         public void LoginAsRegistratedUser()
         {
-            Logger.Log.Info("Start LoginAsRegistratedUser unit test.");
+            Logger.Log.Debug("Start LoginAsRegistratedUser unit test.");
 
             string expectingMessage = ErrorCreater.CorrectLoginAndPassword();
 
@@ -33,7 +33,7 @@ namespace Framework.Test
         [Category("LoginTest")]
         public void LoginAsRegistratedUserWithIncorrectPassword()
         {
-            Logger.Log.Info("Start LoginAsRegistratedUserWithIncorrectPassword unit test.");
+            Logger.Log.Debug("Start LoginAsRegistratedUserWithIncorrectPassword unit test.");
 
             string expectingMessage = ErrorCreater.IncorrectLoginOrPassword();
 
@@ -49,7 +49,7 @@ namespace Framework.Test
         [Category("LoginTest")]
         public void LoginAsNonRegistratedUser()
         {
-            Logger.Log.Info("Start LoginAsNonRegistratedUser unit test.");
+            Logger.Log.Debug("Start LoginAsNonRegistratedUser unit test.");
 
             string expectingMessage = ErrorCreater.IncorrectLoginOrPassword();
 

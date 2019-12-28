@@ -25,7 +25,7 @@ namespace Framework.Pages
 
         public LoginPage FillInFields(User user)
         {
-            Logger.Log.Info("Fill in fields:" + user.ToString());
+            Logger.Log.Debug("Fill in fields:" + user.ToString());
 
             eMailField.SendKeys(user.EMail);
             passwordField.SendKeys(user.Password);
@@ -35,7 +35,7 @@ namespace Framework.Pages
 
         public LoginPage Login()
         {
-            Logger.Log.Info("Login.");
+            Logger.Log.Debug("Login.");
             submitButtton.Click();
             return this;
         }
@@ -44,24 +44,24 @@ namespace Framework.Pages
         {
             try
             {
-                Logger.Log.Info("Get message text: " + errorMessage.Text);
+                Logger.Log.Debug("Get message text: " + errorMessage.Text);
 
                 return errorMessage.Text;
             }
             catch (WebDriverException wdEx)
             {
-                Logger.Log.Info("Get message text: no error message" );
+                Logger.Log.Debug("Get message text: no error message" );
                 return "";
             }
             catch (Exception ex)
             {
-                Logger.Log.Info(ex.Message);
+                Logger.Log.Debug(ex.Message);
                 return "";
             }
         }
         public override BasePage OpenPage()
         {
-            Logger.Log.Info("Open login page.");
+            Logger.Log.Debug("Open login page.");
 
             webDriver.Navigate().GoToUrl("https://rentride.ru/login/?BACKURL=/account/cars/new/");
             return this;

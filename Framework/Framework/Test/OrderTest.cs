@@ -17,7 +17,7 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void StartDateLeaseEndDate()
         {
-            Logger.Log.Info("Start StartDateLeaseEndDate unit test.");
+            Logger.Log.Debug("Start StartDateLeaseEndDate unit test.");
 
             string expectingMessage = ErrorCreater.StartDateLeaseEndDate();
 
@@ -34,7 +34,7 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void SimilarStartDateAndEndDate()
         {
-            Logger.Log.Info("Start SimilarStartDateAndEndDate unit test.");
+            Logger.Log.Debug("Start SimilarStartDateAndEndDate unit test.");
 
             string expectingMessage = ErrorCreater.SimilarStartDateAndEndDate();
 
@@ -51,7 +51,7 @@ namespace Framework.Test
         [Category("PositiveTest")]
         public void SendOrderPositiveTest()
         {
-            Logger.Log.Info("Start SendOrderPositiveTest unit test.");
+            Logger.Log.Debug("Start SendOrderPositiveTest unit test.");
 
             string expectingMessage = ErrorCreater.UserWithZeroExp();
 
@@ -72,7 +72,7 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void SendOrderWithZeroExperience()
         {
-            Logger.Log.Info("Start SendOrderWithZeroExperience unit test.");
+            Logger.Log.Debug("Start SendOrderWithZeroExperience unit test.");
 
             string expectingMessage = ErrorCreater.UserWithZeroExp();
 
@@ -88,7 +88,7 @@ namespace Framework.Test
         [Category("PositiveTest")]
         public void FindAllOrdersPositiveTest()
         {
-            Logger.Log.Info("Start FindAllOrdersPositiveTest unit test.");
+            Logger.Log.Debug("Start FindAllOrdersPositiveTest unit test.");
 
             Assert.False((new StartPage(webDriver).OpenPage() as StartPage)
                                             .ClickSubmitButton()

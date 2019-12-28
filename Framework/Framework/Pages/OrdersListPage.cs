@@ -38,19 +38,19 @@ namespace Framework.Pages
 
         public OrdersListPage(IWebDriver webDriver) : base(webDriver)
         {
-            Logger.Log.Info("Open orders list page");
+            Logger.Log.Debug("Open orders list page");
             PageFactory.InitElements(webDriver, this);
         }
 
         public OrdersListPage ResetFilters()
         {
-            Logger.Log.Info("Reset filters");
+            Logger.Log.Debug("Reset filters");
             filterResetButton.Click();
             return this;
         }
         public OrdersListPage SubmitFilterOptions()
         {
-            Logger.Log.Info("Submit filter options");
+            Logger.Log.Debug("Submit filter options");
 
             submitFilterButton.Click();
             return this;
@@ -58,19 +58,19 @@ namespace Framework.Pages
 
         public bool IsCarListEmpty()
         {
-            Logger.Log.Info("Cheak car list (count elements: " + carList.Count + ")");
+            Logger.Log.Debug("Cheak car list (count elements: " + carList.Count + ")");
             return carList.Count <= 0;
         }
 
         public InformationOfferPage TakeMoreInformationAboutFirstOrder()
         {
-            Logger.Log.Info("Go to InformationOfferPage");
+            Logger.Log.Debug("Go to InformationOfferPage");
             firstMoreInformationButton.Click();
             return new InformationOfferPage(this.webDriver);
         }
         public string GetErrorMessageText()
         {
-            Logger.Log.Info("Get error text: " + errorMessageAlert.Text);
+            Logger.Log.Debug("Get error text: " + errorMessageAlert.Text);
             return errorMessageAlert.Text;
         }
         

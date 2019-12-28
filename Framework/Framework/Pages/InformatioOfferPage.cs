@@ -28,21 +28,21 @@ namespace Framework.Pages
 
         public InformationOfferPage(IWebDriver webDriver) : base(webDriver)
         {
-            Logger.Log.Info("Open information Offer page.");
+            Logger.Log.Debug("Open information Offer page.");
 
             PageFactory.InitElements(webDriver, this);
         }
 
         public OrderRegistrationPage SubmitOrderСhoice()
         {
-            Logger.Log.Info("Submit order choice.");
+            Logger.Log.Debug("Submit order choice.");
             rentalButtonSubmit.Click();
             return new OrderRegistrationPage(this.webDriver);
         }
 
         public InformationOfferPage SetDateStartFromDefault(int coutDays)
         {
-            Logger.Log.Info("Set date start from default: " + coutDays.ToString());
+            Logger.Log.Debug("Set date start from default: " + coutDays.ToString());
 
             DateCalendarManipulater.SetDateCalendar(rentalDateStart, coutDays);
 
@@ -50,7 +50,7 @@ namespace Framework.Pages
         }
         public InformationOfferPage SetDateEndFromDefault(int coutDays)
         {
-            Logger.Log.Info("Set date end from default: " + coutDays.ToString());
+            Logger.Log.Debug("Set date end from default: " + coutDays.ToString());
 
             DateCalendarManipulater.SetDateCalendar(rentalDateEnd, coutDays);
             rentalDateEnd.SendKeys(Keys.Enter);
