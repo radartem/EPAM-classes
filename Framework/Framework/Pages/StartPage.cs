@@ -34,7 +34,7 @@ namespace Framework
 
         public StartPage SetDateStartFromDefault(int coutDays)
         {
-            Logger.Log.Debug("Set date start from default: " + coutDays.ToString());
+            Logger.Log.Info("Set date start from default: " + coutDays.ToString());
 
             DateCalendarManipulater.SetDateCalendar(rentalDateStart, coutDays);
 
@@ -42,7 +42,7 @@ namespace Framework
         }
         public StartPage SetDateEndFromDefault(int coutDays)
         {
-            Logger.Log.Debug("Set date end from default: " + coutDays.ToString());
+            Logger.Log.Info("Set date end from default: " + coutDays.ToString());
 
             DateCalendarManipulater.SetDateCalendar(rentalDateEnd, coutDays);
 
@@ -51,27 +51,34 @@ namespace Framework
 
         public OrdersListPage ClickSubmitButton()
         {
-            Logger.Log.Debug("Submit filter (ClickSubmitButton)");
+            Logger.Log.Info("Submit filter (ClickSubmitButton)");
             submitButton.Click();
             return new OrdersListPage(this.webDriver);
         }
 
+        public StartPage ClickSubmitButton(bool GoToNextPage)
+        {
+            Logger.Log.Info("Submit filter (ClickSubmitButton)");
+            submitButton.Click();
+            return this;
+        }
+
         public string GetErrorMessageText()
         {
-            Logger.Log.Debug("Get error text: " + errorMessageAlert.Text);
+            Logger.Log.Info("Get error text: " + errorMessageAlert.Text);
             return errorMessageAlert.Text;
         }
         
         public ContactsPage GoToContactsPage()
         {
-            Logger.Log.Debug("Go to contacts page");
+            Logger.Log.Info("Go to contacts page");
             navigationMenuLinkContacts.Click();
             return new ContactsPage(this.webDriver);
         }
 
         public override BasePage OpenPage()
         {
-            Logger.Log.Debug("Open strat page.");
+            Logger.Log.Info("Open strat page.");
             webDriver.Navigate().GoToUrl("https://rentride.ru/");
             return this;
         }

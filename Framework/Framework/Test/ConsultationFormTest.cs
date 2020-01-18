@@ -17,7 +17,7 @@ namespace Framework.Test
         [Category("FormTest")]
         public void SendBlankEMail()
         {
-            Logger.Log.Debug("Start SendBlankEMail unit test.");
+            Logger.Log.Info("Start SendBlankEMail unit test.");
             string expectingMessage = ErrorCreater.MessageWithEmptyFields();
 
 
@@ -33,7 +33,7 @@ namespace Framework.Test
         [Category("FormTest")]
         public void SendEMailIncorrectEMailAdr()
         {
-            Logger.Log.Debug("Start SendEMailIncorrectEMailAdr unit test.");
+            Logger.Log.Info("Start SendEMailIncorrectEMailAdr unit test.");
 
             string expectingMessage = ErrorCreater.MessageWithInvalidEMail();
 

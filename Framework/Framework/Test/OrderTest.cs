@@ -17,14 +17,14 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void StartDateLeaseEndDate()
         {
-            Logger.Log.Debug("Start StartDateLeaseEndDate unit test.");
+            Logger.Log.Info("Start StartDateLeaseEndDate unit test.");
 
             string expectingMessage = ErrorCreater.StartDateLeaseEndDate();
 
             string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
                                             .SetDateStartFromDefault(2)
                                             .SetDateEndFromDefault(-3)
-                                            .ClickSubmitButton()
+                                            .ClickSubmitButton(false)
                                             .GetErrorMessageText();
 
             Assert.AreEqual(expectingMessage, errorMessage);
@@ -34,14 +34,14 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void SimilarStartDateAndEndDate()
         {
-            Logger.Log.Debug("Start SimilarStartDateAndEndDate unit test.");
+            Logger.Log.Info("Start SimilarStartDateAndEndDate unit test.");
 
             string expectingMessage = ErrorCreater.SimilarStartDateAndEndDate();
 
             string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
                                             .SetDateStartFromDefault(1)
                                             .SetDateEndFromDefault(-2)
-                                            .ClickSubmitButton()
+                                            .ClickSubmitButton(false)
                                             .GetErrorMessageText();
 
             Assert.AreEqual(expectingMessage, errorMessage);
@@ -51,15 +51,14 @@ namespace Framework.Test
         [Category("PositiveTest")]
         public void SendOrderPositiveTest()
         {
-            Logger.Log.Debug("Start SendOrderPositiveTest unit test.");
+            Logger.Log.Info("Start SendOrderPositiveTest unit test.");
 
             string expectingMessage = ErrorCreater.UserWithZeroExp();
 
             string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
                                             .ClickSubmitButton()
+                                            .SortDownList()
                                             .TakeMoreInformationAboutFirstOrder()
-                                            .SetDateStartFromDefault(1)
-                                            .SetDateEndFromDefault(1)
                                             .SubmitOrderСhoice()
                                             .FillInUserData(UserCreater.UserWithZeroExperience())
                                             .SubmitOrder()
@@ -72,7 +71,7 @@ namespace Framework.Test
         [Category("OrderTest")]
         public void SendOrderWithZeroExperience()
         {
-            Logger.Log.Debug("Start SendOrderWithZeroExperience unit test.");
+            Logger.Log.Info("Start SendOrderWithZeroExperience unit test.");
 
             string expectingMessage = ErrorCreater.UserWithZeroExp();
 
@@ -88,7 +87,7 @@ namespace Framework.Test
         [Category("PositiveTest")]
         public void FindAllOrdersPositiveTest()
         {
-            Logger.Log.Debug("Start FindAllOrdersPositiveTest unit test.");
+            Logger.Log.Info("Start FindAllOrdersPositiveTest unit test.");
 
             Assert.False((new StartPage(webDriver).OpenPage() as StartPage)
                                             .ClickSubmitButton()

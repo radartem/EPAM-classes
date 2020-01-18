@@ -32,7 +32,7 @@ namespace Framework
 
         public ContactsPage FillInFields(Message message)
         {
-            Logger.Log.Debug("Fill in fields by values" + message.ToString());
+            Logger.Log.Info("Fill in fields by values" + message.ToString());
             topicField.SendKeys(message.Topic);
             previewTextField.SendKeys(message.MessageText);
             eMailField.SendKeys(message.Email);
@@ -42,7 +42,7 @@ namespace Framework
         }
         public ContactsPage SendMessage()
         {
-            Logger.Log.Debug("Send message.");
+            Logger.Log.Info("Send message.");
             sendButton.Click();
 
             return this;
@@ -50,13 +50,13 @@ namespace Framework
 
         public string GetMessageText()
         {
-            Logger.Log.Debug("Get message text: " + errorMessageAlert.Text);
+            Logger.Log.Info("Get message text: " + errorMessageAlert.Text);
             return errorMessageAlert.Text;
         }
 
         public override BasePage OpenPage()
         {
-            Logger.Log.Debug("Open base page.");
+            Logger.Log.Info("Open base page.");
             webDriver.Navigate().GoToUrl("https://rentride.ru/info/");
             return this;
         }

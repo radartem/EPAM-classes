@@ -26,7 +26,7 @@ namespace Framework.Test
             Logger.Log.Warn("Start driver initializing.");
             webDriver = DriverSingleton.GetWebDriver();
             webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            Logger.Log.Debug("Driver initialized.");
+            Logger.Log.Info("Driver initialized.");
         }
 
         [TearDown]

@@ -34,12 +34,12 @@ namespace Framework.Pages
         [FindsBy(How = How.Id, Using = "rent-submit")]
         private IWebElement rentSubmitButton;
 
-        [FindsBy(How = How.Id, Using = "notifies-block")]
+        [FindsBy(How = How.ClassName, Using = "alert-danger")]
         private IWebElement errorMessageAlert;
 
         public OrderRegistrationPage FillInUserData(User user)
         {
-            Logger.Log.Debug("Fill in user data:"+user.ToString());
+            Logger.Log.Info("Fill in user data:"+user.ToString());
 
             nameField.SendKeys(user.Name);
             experienceField.SendKeys(user.Experience);
@@ -50,13 +50,13 @@ namespace Framework.Pages
 
         public OrderRegistrationPage SubmitOrder()
         {
-            Logger.Log.Debug("Submit order.");
+            Logger.Log.Info("Submit order.");
             rentSubmitButton.Click();
             return this;
         }
         public string GetErrorMessageText()
         {
-            Logger.Log.Debug("Get error message text: " + errorMessageAlert.Text);
+            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
 
             return errorMessageAlert.Text;
         }
@@ -68,9 +68,9 @@ namespace Framework.Pages
 
         public override BasePage OpenPage()
         {
-            Logger.Log.Debug("Open order registration page");
+            Logger.Log.Info("Open order registration page");
 
-            webDriver.Navigate().GoToUrl("https://rentride.ru/deal/38339620");
+            webDriver.Navigate().GoToUrl("https://rentride.ru/deal/26653078");
             return this;
         }
     }

@@ -19,7 +19,7 @@ namespace Framework.Services
         static readonly string userWithZeroExp = "Стаж не указан";
         public static string MessageWithInvalidEMail()
         {
-            return invalidEmail+"\r\n" + captchaError;
+            return /*invalidEmail+"\r\n" + */captchaError;
         }
         public static string CorrectLoginAndPassword()
         {
