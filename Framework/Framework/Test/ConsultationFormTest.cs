@@ -21,8 +21,7 @@ namespace Framework.Test
             string expectingMessage = ErrorCreater.MessageWithEmptyFields();
 
 
-            string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
-                                                .GoToContactsPage()
+            string errorMessage = (new ContactsPage(webDriver).OpenPage() as ContactsPage)
                                                 .SendMessage()
                                                 .GetMessageText();
 
@@ -39,8 +38,7 @@ namespace Framework.Test
 
             Message message = MessageCreater.WithAllProperties();
 
-            string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
-                                                .GoToContactsPage()
+            string errorMessage = (new ContactsPage(webDriver).OpenPage() as ContactsPage)
                                                 .FillInFields(message)
                                                 .SendMessage()
                                                 .GetMessageText();
