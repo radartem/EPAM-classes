@@ -42,6 +42,7 @@ namespace Framework
         }
         public ContactsPage SendMessage()
         {
+            ((IJavaScriptExecutor)webDriver).ExecuteScript("scroll(0,400)");
             Logger.Log.Info("Send message.");
             sendButton.Click();
 
