@@ -75,7 +75,11 @@ namespace Framework.Test
 
             string expectingMessage = ErrorCreater.UserWithZeroExp();
 
-            string errorMessage = (new OrderRegistrationPage(webDriver).OpenPage() as OrderRegistrationPage)
+            string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
+                                            .ClickSubmitButton()
+                                            .SortDownList()
+                                            .TakeMoreInformationAboutFirstOrder()
+                                            .SubmitOrderСhoice()
                                             .FillInUserData(UserCreater.UserWithZeroExperience())
                                             .SubmitOrder()
                                             .GetErrorMessageText();
