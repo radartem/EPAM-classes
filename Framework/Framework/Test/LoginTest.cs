@@ -25,7 +25,7 @@ namespace Framework.Test
             string errorMessage = (new LoginPage(webDriver).OpenPage() as LoginPage)
                                     .FillInFields(UserCreater.RegregisteredUser())
                                     .Login()
-                                    .GetErrorMessage();
+                                    .GetWarningMessage();
             Assert.AreEqual(expectingMessage, errorMessage);
         }
 

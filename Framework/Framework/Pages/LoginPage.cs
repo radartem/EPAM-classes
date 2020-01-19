@@ -23,6 +23,9 @@ namespace Framework.Pages
         [FindsBy(How = How.ClassName, Using = "field-tips_error")]
         private IWebElement errorMessage;
 
+        [FindsBy(How = How.ClassName, Using = "alert-warning")]
+        private IWebElement warningMessage;
+       
         public LoginPage FillInFields(User user)
         {
             Logger.Log.Info("Fill in fields:" + user.ToString());
@@ -38,6 +41,13 @@ namespace Framework.Pages
             Logger.Log.Info("Login.");
             submitButtton.Click();
             return this;
+        }
+
+        public string GetWarningMessage()
+        {
+            Logger.Log.Info("Get message text: " + warningMessage.Text);
+
+            return warningMessage.Text;
         }
 
         public string GetErrorMessage()

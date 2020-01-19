@@ -35,9 +35,12 @@ namespace Framework.Test
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 ScreenshotCreater.SaveScreenShot(webDriver);
+                Logger.Log.Fatal("Test Failed");
+
             }
 
             DriverSingleton.CloseDriver();
+            Logger.Log.Info("Driver Closed.");
         }
 
     }

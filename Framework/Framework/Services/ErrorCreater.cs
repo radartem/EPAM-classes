@@ -23,7 +23,7 @@ namespace Framework.Services
         }
         public static string CorrectLoginAndPassword()
         {
-            return "";
+            return "×\r\nВаш аккаунт частично ограничен в правах. Чтобы сдавать или брать автомобили в аренду - заполните свой профиль:\r\nЗаполнить персональные данные";
         }
 
         public static string IncorrectLoginOrPassword()
