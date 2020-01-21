@@ -23,7 +23,9 @@ namespace Framework.Pages
 
         public override BasePage OpenPage()
         {
-            throw new NotImplementedException();
+            Logger.Log.Info("Open info page.");
+            webDriver.Navigate().GoToUrl("https://rentride.ru/cars/162105/?date_from=22.01.2020%2000:00&date_to=25.01.2020%2000:00");
+            return this;
         }
 
         public InformationOfferPage(IWebDriver webDriver) : base(webDriver)

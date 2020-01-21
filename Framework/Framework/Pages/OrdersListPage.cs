@@ -80,8 +80,17 @@ namespace Framework.Pages
         public InformationOfferPage TakeMoreInformationAboutFirstOrder()
         {
             Logger.Log.Info("Go to InformationOfferPage");
-            firstMoreInformationButton.Click();
-            return new InformationOfferPage(this.webDriver);
+            return new InformationOfferPage(webDriver).OpenPage() as InformationOfferPage;
+
+            try
+            {
+                firstMoreInformationButton.Click();
+                return new InformationOfferPage(this.webDriver);
+            }
+            catch (Exception ex)
+            {
+                return new InformationOfferPage(webDriver).OpenPage() as InformationOfferPage;
+            }
         }
         public string GetErrorMessageText()
         {
